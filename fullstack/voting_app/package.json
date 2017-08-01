@@ -1,0 +1,20 @@
+{
+    "name": "cireact",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "dev": "next",
+        "build": "next build",
+        "start": "next start"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "next": "^3.0.1-beta.18",
+        "react": "^15.6.1",
+        "react-dom": "^15.6.1",
+        "semantic-ui": "^2.2.11"
+    }
+}

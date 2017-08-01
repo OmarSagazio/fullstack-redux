@@ -1,0 +1,16 @@
+@font-face {
+    font-family: 'roboto';
+    src: url('./fonts/Roboto-Regular.ttf') format('ttf');
+    font-weight: 600;
+    font-style: normal;
+}
+
+.hello {
+    font-family: 'roboto';
+    color: red;
+    /*background: url('./vidocq.jpg');*/
+}
+
+body {
+  background: blue;
+}
