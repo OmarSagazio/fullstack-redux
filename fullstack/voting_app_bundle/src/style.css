@@ -8,9 +8,13 @@
 .hello {
     font-family: 'roboto';
     color: red;
-    /*background: url('./vidocq.jpg');*/
 }
 
-body {
-  background: blue;
+.avatar {
+    width: 32px;
+    height: 32px;
+}
+
+.image img {
+    width: 180px;
 }

@@ -3,9 +3,28 @@ import React from 'react';
 
 class Product extends React.Component {
 
+    constructor(props) {
+        super(props);
+
+        this.handleUpVote = this.handleUpVote.bind(this);
+    }
+
+    handleUpVote() {
+        this.props.onVote(this.props.id);
+    }
+
     render() {
         return (
             <div className="item">
+                <div className="content">
+                    <div className="header">
+                        <a onClick={this.handleUpVote}>
+                            Set an Icon here.
+                        </a>
+                        {this.props.votes}
+                    </div>
+                </div>
+
                 <div className="image">
                     <img src={this.props.productImageUrl} />
                 </div>
