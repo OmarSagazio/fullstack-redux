@@ -8,20 +8,44 @@ import Product from './Product';
 
 class ProductList extends React.Component {
 
+    state = {
+        products: []
+    };
 
-    handleProductUpVote(productId) {
-        console.log(productId + " was upvoted.");
+    componentDidMount() {
+        this.setState({products: productSeeds});
+    }
+
+
+    handleProductUpVote = (productId) => {
+        const nextProducts =
+        this.state.products.map(
+            product => {
+                if(product.id === productId) {
+                    return {
+                        ...product,
+                        votes: product.votes + 1
+                    }
+                } else {
+                    return product;
+                }
+            }
+        );
+
+        this.setState({
+            products: nextProducts
+        });
     }
 
     render() {
 
-        const products = productSeeds.sort(
-            (a ,b) => b.votes - a.votes
+        const products = this.state.products.sort(
+            (a, b) => b.votes - a.votes
         );
 
         const productComponents = products.map(product =>(
             <Product
-                id={'product-' + product.id}
+                id={product.id}
                 key={'product-' + product.id}
                 title={product.title}
                 description={product.description}
