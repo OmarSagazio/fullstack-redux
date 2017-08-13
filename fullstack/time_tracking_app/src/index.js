@@ -1,11 +1,12 @@
+import '../node_modules/semantic-ui-css/semantic.min.css';
 import './style.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import ProductList from '../public/component/ProductList.js';
+import TimersDashboard from '../public/components/TimersDashboard.js';
 
 
 ReactDOM.render(
-    <ProductList />,
+    <TimersDashboard />,
     document.getElementById('content')
 );
