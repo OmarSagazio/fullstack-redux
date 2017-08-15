@@ -4,6 +4,7 @@ import EditableTimer from './EditableTimer';
 
 class EditableTimerList extends React.Component {
 
+
     render() {
 
         const timers = this.props.timers.map(
@@ -15,6 +16,7 @@ class EditableTimerList extends React.Component {
                     project={timer.project}
                     elapsed={timer.elapsed}
                     runningSince={timer.runningSince}
+                    onFormSubmit={this.props.onFormSubmit}
                 />
             )
         );
