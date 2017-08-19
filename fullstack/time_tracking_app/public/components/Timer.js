@@ -4,18 +4,43 @@ import moment from 'moment';
 import 'moment-duration-format'
 
 class Timer extends React.Component {
-
-    renderElapsedString = (elapsed) => {
-        // const time = moment.duration(elapsed);
-        return moment.duration(elapsed).format('HH:mm:ss', { trim: false});
-        // return time.hours()+ ":" + time.minutes() + ":" + time.seconds();
+    // ---------------------------------
+    //  Lifecycle
+    // ---------------------------------
+    componentDidMount() {
+        this.forceUpdateInterval = setInterval(() => this.forceUpdate(), 50);
     };
 
+    componentWillUnmount() {
+        clearInterval(this.forceUpdateInterval);
+    };
 
+    // ---------------------------------
+    //  Handlers
+    // ---------------------------------
+    handleTrashClick = () => {
+        this.props.onTrashClick(this.props.id);
+    };
+
+    // ---------------------------------
+    //  Methods
+    // ---------------------------------
+    // TODO: export in helper.js
+    renderElapsedString = (elapsed, runningSince) => {
+        // const time = moment.duration(elapsed);
+        if (runningSince) {
+            elapsed += Date.now() - runningSince;
+        }
+        return moment.duration(elapsed).format('HH:mm:ss', { trim: false});
+    };
+
+    // ---------------------------------
+    //  Render
+    // ---------------------------------
     render() {
         // TODO: =edit | move to "helpers.js" file
         // const elapsedString = helpers.renderElapsedString(this.props.elapsed);
-        const elapsedString = this.renderElapsedString(this.props.elapsed);
+        const elapsedString = this.renderElapsedString(this.props.elapsed, this.props.runningSince);
 
         return (
             <div className="ui centered card">
@@ -31,7 +56,9 @@ class Timer extends React.Component {
                             onClick={this.props.onEditClick}>
                             <i className="edit icon"></i>
                         </span>
-                        <span className="right floated trash icon">
+                        <span
+                            className="right floated trash icon"
+                            onClick={this.handleTrashClick}>
                             <i className="trash icon"></i>
                         </span>
                     </div>
