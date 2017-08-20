@@ -1,5 +1,7 @@
 import React from 'react';
-// import * as moment from 'moment';
+
+import TimerActionButton from './TimerActionButton'
+
 import moment from 'moment';
 import 'moment-duration-format'
 
@@ -18,9 +20,11 @@ class Timer extends React.Component {
     // ---------------------------------
     //  Handlers
     // ---------------------------------
-    handleTrashClick = () => {
-        this.props.onTrashClick(this.props.id);
-    };
+    handleTrashClick = () => this.props.onTrashClick(this.props.id);
+
+    handleStartClick = () => this.props.onStartClick(this.props.id);
+
+    handleStopClick = () => this.props.onStopClick(this.props.id);
 
     // ---------------------------------
     //  Methods
@@ -63,7 +67,11 @@ class Timer extends React.Component {
                         </span>
                     </div>
                 </div>
-                <div className="ui bottom attached blue basic button">Start</div>
+                <TimerActionButton
+                    timerIsRunning={!!this.props.runningSince}
+                    onStartClick={this.handleStartClick}
+                    onStopClick={this.handleStopClick}
+                />
             </div>
         );
     }

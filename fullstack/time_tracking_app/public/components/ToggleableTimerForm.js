@@ -4,23 +4,30 @@ import TimerForm from './TimerForm';
 
 class ToggleableTimerForm extends React.Component {
 
+    // ---------------------------------
+    //  Init
+    // ---------------------------------
     state = {
         isOpen: false
     };
 
-    handleFormOpen = () => {
-        this.setState({isOpen: true});
-    };
 
-    handleFormClose = () => {
-        this.setState({isOpen: false});
-    };
+    // ---------------------------------
+    //  Handlers
+    // ---------------------------------
+    handleFormOpen = () => this.setState({isOpen: true});
+
+    handleFormClose = () => this.setState({isOpen: false});
 
     handleFormSubmit = timer => {
         this.props.onFormSubmit(timer);
         this.setState({isOpen: false});
     };
 
+
+    // ---------------------------------
+    //  Render
+    // ---------------------------------
     render() {
         if (this.state.isOpen) {
             return (

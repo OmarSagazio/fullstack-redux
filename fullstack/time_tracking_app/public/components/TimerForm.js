@@ -3,6 +3,9 @@ import React from 'react';
 
 class TimerForm extends React.Component {
 
+    // ---------------------------------
+    //  Init
+    // ---------------------------------
     constructor(props) {
         super(props);
 
@@ -12,12 +15,13 @@ class TimerForm extends React.Component {
         };
     }
 
-    handleTitleChange = (e) => {
-        this.setState({title: e.target.value});
-    };
-    handleProjectChange = (e) => {
-        this.setState({project: e.target.value});
-    };
+
+    // ---------------------------------
+    //  Handlers
+    // ---------------------------------
+    handleTitleChange = (e) => this.setState({title: e.target.value});
+    
+    handleProjectChange = (e) => this.setState({project: e.target.value});
 
     handleSubmit = () => {
         this.props.onFormSubmit({
@@ -27,6 +31,10 @@ class TimerForm extends React.Component {
         });
     };
 
+
+    // ---------------------------------
+    //  Render
+    // ---------------------------------
     render() {
         const submitText = this.props.id ? "Update" : "Create";
 
